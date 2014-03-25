@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ManageBeans;
+package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import Exceptions.SearchNullException;
-import ejbs.MusicFacade;
-import entities.Music;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.SearchNullException;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ManageBeans;
+package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import Exceptions.DuplicateEmailException;
-import ejbs.AppUserFacade;
-import Classes.EncryptMD5;
-import entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.AppUserFacade;
+import pt.uc.dei.aor.projeto4.grupog.classes.EncryptMD5;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ManageBeans;
+package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import entities.Music;
-import entities.Playlist;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;

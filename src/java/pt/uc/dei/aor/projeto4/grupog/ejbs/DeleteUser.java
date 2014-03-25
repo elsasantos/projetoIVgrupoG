@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejbs;
+package pt.uc.dei.aor.projeto4.grupog.ejbs;
 
-import entities.AppUser;
-import entities.Playlist;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import java.io.File;
 import java.util.List;
 import javax.ejb.EJB;

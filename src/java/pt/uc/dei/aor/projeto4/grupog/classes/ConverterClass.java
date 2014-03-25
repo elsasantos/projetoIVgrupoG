@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes;
+package pt.uc.dei.aor.projeto4.grupog.classes;
 
-import ejbs.PlaylistFacade;
-import entities.Playlist;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;

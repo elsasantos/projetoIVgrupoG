@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejbs;
+package pt.uc.dei.aor.projeto4.grupog.ejbs;
 
-import Classes.EncryptMD5;
-import Exceptions.DuplicateEmailException;
-import entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.classes.EncryptMD5;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;

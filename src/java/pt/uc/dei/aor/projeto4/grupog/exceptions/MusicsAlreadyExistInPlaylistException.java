@@ -4,15 +4,15 @@
  * and open the template in the editor.
  */
 
-package Exceptions;
+package pt.uc.dei.aor.projeto4.grupog.exceptions;
 
 /**
  * @author Elsa Santos
  * @author Orlando Neves
  */
 
-public class SearchNullException extends Exception{
-    public SearchNullException(){
-        super("Your search returned no results! Try again!");
+public class MusicsAlreadyExistInPlaylistException extends Exception{
+    public MusicsAlreadyExistInPlaylistException(){
+        super("This music already exist in the select playlist.");
     }
 }

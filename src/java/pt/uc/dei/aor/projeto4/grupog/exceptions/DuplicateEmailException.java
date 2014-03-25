@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Exceptions;
+package pt.uc.dei.aor.projeto4.grupog.exceptions;
 
 /**
  * @author Elsa Santos

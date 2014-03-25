@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ManageBeans;
+package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import ejbs.PlaylistFacade;
-import entities.Playlist;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.model.DataModel;

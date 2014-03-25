@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-import Exceptions.DuplicateEmailException;
-import ejbs.AppUserFacade;
-import entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.AppUserFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
 import javax.ejb.embeddable.EJBContainer;
 import org.junit.After;
 import org.junit.AfterClass;

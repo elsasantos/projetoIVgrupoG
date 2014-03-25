@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package pt.uc.dei.aor.projeto4.grupog.entities;
 
 import java.io.Serializable;
 import java.util.List;

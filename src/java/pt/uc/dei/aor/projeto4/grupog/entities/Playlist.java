@@ -1,4 +1,4 @@
-package entities;
+package pt.uc.dei.aor.projeto4.grupog.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;

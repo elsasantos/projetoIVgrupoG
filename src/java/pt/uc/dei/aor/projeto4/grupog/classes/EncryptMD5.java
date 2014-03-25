@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes;
+package pt.uc.dei.aor.projeto4.grupog.classes;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
