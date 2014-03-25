@@ -5,16 +5,16 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
-import pt.uc.dei.aor.projeto4.grupog.ejbs.AppUserFacade;
-import pt.uc.dei.aor.projeto4.grupog.classes.EncryptMD5;
-import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import pt.uc.dei.aor.projeto4.grupog.classes.EncryptMD5;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.AppUserFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
 
 /**
  * @author Elsa Santos
@@ -63,7 +63,7 @@ public class LoginMb {
         try {
 
             logado.setUser(us);
-            return "listAllMusics";
+            return "PopularMusics";
 
         } catch (NullPointerException ex) {
             Logger.getLogger(LoginMb.class.getName()).log(Level.SEVERE, null, ex);
