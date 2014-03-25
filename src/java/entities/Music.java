@@ -35,7 +35,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Music.findMusicByTitleOrArtist", query = "SELECT m FROM Music m WHERE m.artist LIKE :word OR m.title LIKE :word"),
     @NamedQuery(name = "Music.findMusicByPlaylist", query = "SELECT m FROM Music m WHERE m.playlists = :playlists"),
     @NamedQuery(name = "Music.findAllFromUser", query = "SELECT m FROM Music m WHERE m.user = :user"),})
-public class Music implements Serializable {
+public class Music implements Serializable, Comparable<Music> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -169,6 +169,11 @@ public class Music implements Serializable {
     @Override
     public String toString() {
         return "persistence.Music[ id=" + music_id + " ]";
+    }
+
+    @Override
+    public int compareTo(Music o) {
+        return o.getPlaylists().size()-this.playlists.size();
     }
 
 }
