@@ -5,14 +5,13 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
-import pt.uc.dei.aor.projeto4.grupog.entities.Music;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -22,6 +21,8 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
 
 /**
  * @author Elsa Santos
@@ -119,8 +120,10 @@ public class RequestMusicMb implements Serializable {
      * @return DataModel<Music>
      */
     public DataModel<Music> getMusicList() {
-        if (music_ejb != null) {
-            DataModel model = (DataModel<Music>) new ListDataModel(music_ejb.findAll());
+        if (music_ejb != null ) {
+            List<Music> list = music_ejb.findAll();
+            Collections.sort(list);
+            DataModel model = (DataModel<Music>) new ListDataModel(list);
             musics = model;
             return model;
         }
