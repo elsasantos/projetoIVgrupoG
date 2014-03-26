@@ -54,12 +54,15 @@ public class TopMusicServlet extends HttpServlet {
                 out.println("<th>Title</th>");
                 out.println("<th>Artist</th>");
                 out.println("<th>Album</th>");
+
                 out.println("<th>Music Year</th>");
+
                 out.println("<th>User</th>");
 
                 for (Music m : allMusic) {
-
-                    out.println("<tr><td>" + m.getPlaylists().size() + "</tr></td>");
+                    out.println("<tr>");
+                    out.println("<td>");
+                    out.println(m.getPlaylists().size());
                     out.println("</td>");
                     out.println("<td>");
                     out.println(m.getTitle());
