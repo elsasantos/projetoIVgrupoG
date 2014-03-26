@@ -30,8 +30,18 @@ function initRequest() {
     }
 }
 
+function tabletop10() {
+
+    var url = "toptenservlet?action=top10&id=" + escape(popularmusics.value);
+    req = initRequest();
+    req.open("GET", url, true);
+    req.onreadystatechange = callback;
+    req.send(null);
+    
+}
+
 function callback() {
-    clearTable();
+ 
 
     if (req.readyState == 4) {
         if (req.status == 200) {

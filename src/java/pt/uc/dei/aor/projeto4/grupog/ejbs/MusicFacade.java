@@ -170,5 +170,19 @@ public class MusicFacade extends AbstractFacade<Music> {
             return null;
         }
     }
+    
+    /**
+     * most popular musics
+     */
+    public List<Music> showMostPopularMusics() {
+
+        try {
+            List<Music> m = (List<Music>) em.createNamedQuery("Music.findMostPopularMusics").getResultList();
+            return m;
+        } catch (NullPointerException | IllegalStateException ex) {
+            Logger.getLogger(MusicFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
 }
