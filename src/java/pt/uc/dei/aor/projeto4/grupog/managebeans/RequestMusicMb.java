@@ -48,6 +48,7 @@ public class RequestMusicMb implements Serializable {
     private String message;
     private GregorianCalendar gc;
     private String url;
+    private List<Music> musics2;
 
     /**
      * Creates a new instance of MusicMb
@@ -59,6 +60,7 @@ public class RequestMusicMb implements Serializable {
     @PostConstruct
     public void init() {
         this.music = new Music();
+        musics2 = music_ejb.showMostPopularMusics();
         this.musics = null;
         this.message = null;
         gc = new GregorianCalendar();
@@ -76,7 +78,7 @@ public class RequestMusicMb implements Serializable {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    public void addMusic() throws FileNotFoundException, IOException {
+    public String addMusic() throws FileNotFoundException, IOException {
 
         try {
 
@@ -109,6 +111,7 @@ public class RequestMusicMb implements Serializable {
         } catch (IOException ex2) {
             System.err.println(ex2.getMessage());
         }
+        return "createMusic";
     }
 
     /**
@@ -127,14 +130,13 @@ public class RequestMusicMb implements Serializable {
      * @return DataModel<Music>
      */
     public DataModel<Music> getMusicList() {
-        if (music_ejb != null) {
-            List<Music> list = music_ejb.findAll();
-            Collections.sort(list);
-            DataModel model = (DataModel<Music>) new ListDataModel(list);
-            musics = model;
-            return model;
-        }
-        return null;
+
+        List<Music> list = music_ejb.findAll();
+        Collections.sort(list);
+        DataModel model = (DataModel<Music>) new ListDataModel(list);
+        musics = model;
+
+        return musics;
     }
 
     /**
@@ -362,6 +364,15 @@ public class RequestMusicMb implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public List<Music> getMusics2() {
+        musics2 = music_ejb.showMostPopularMusics();
+        return musics2;
+    }
+
+    public void setMusics2(List<Music> musics2) {
+        this.musics2 = musics2;
     }
 
 }
