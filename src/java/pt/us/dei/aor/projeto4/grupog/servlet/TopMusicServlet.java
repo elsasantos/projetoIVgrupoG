@@ -74,6 +74,30 @@ public class TopMusicServlet extends HttpServlet {
             }
         }
 
+        if (resp.equals("topten")) {
+            List<Music> allMusic = musicFacade.showMostPopularMusics();
+            StringBuffer sb = new StringBuffer();
+            try {
+                /* TODO output your page here. You may use following sample code. */
+
+                out = response.getWriter();
+                out.println("<table>");
+                out.println("<th>No.</th>");
+                out.println("<th>Title</th>");
+                out.println("<th>Artist</th>");
+
+                for (int i =0 ; i<allMusic.size() && i>10; i++) {
+                    out.println("<tr><td>" + allMusic.get(i).getPlaylists().size() + "</td>");
+                    out.println("<td>" + allMusic.get(i).getTitle() + "</td>");
+                    out.println("<td>" + allMusic.get(i).getArtist() + "</td></tr>");
+
+                }
+                out.println("</table>");
+
+            } catch (Exception e) {
+                out.println("erro");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
