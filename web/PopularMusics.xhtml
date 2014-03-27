@@ -13,6 +13,7 @@ and open the template in the editor.
 
 
     <h:head>
+        
         <ui:insert name="metadata"/>
         <f:event type="preRenderView" listener="#{loginMb.verifyUser()}" />
         <title>Popular Music</title>
@@ -35,7 +36,7 @@ and open the template in the editor.
                                 <f:selectItems value="#{generalController.myPlaylists()}" var="p" itemLabel="#{p.name}"/>
                             </h:selectOneMenu>
 
-                            <h:dataTable value="#{requestMusicMb.musicList}" var="music" border="1" cellpadding="2" cellspacing="2" rules="all" 
+                            <h:dataTable value="#{requestMusicMb.musics2}" var="music" border="1" cellpadding="2" cellspacing="2" rules="all" 
 
                                          styleClass="dataTable"
                                          headerClass="dataTableTitle"
