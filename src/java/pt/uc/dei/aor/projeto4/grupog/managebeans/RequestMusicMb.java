@@ -11,7 +11,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -132,7 +131,6 @@ public class RequestMusicMb implements Serializable {
     public DataModel<Music> getMusicList() {
 
         List<Music> list = music_ejb.findAll();
-        Collections.sort(list);
         DataModel model = (DataModel<Music>) new ListDataModel(list);
         musics = model;
 
