@@ -5,16 +5,16 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.ejbs;
 
-import pt.uc.dei.aor.projeto4.grupog.exceptions.MusicsAlreadyExistInPlaylistException;
-import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
-import pt.uc.dei.aor.projeto4.grupog.entities.Music;
-import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.MusicsAlreadyExistInPlaylistException;
 
 /**
  * @author Elsa Santos
