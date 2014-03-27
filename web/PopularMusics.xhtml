@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:o="http://omnifaces.org/ui">
+      >
 
 
     <h:head>
@@ -21,6 +21,7 @@ and open the template in the editor.
     <h:body>
 
         <ui:composition template="Template/GetPlayTemp.xhtml">
+            
 
             <ui:define name="content">
 
@@ -91,7 +92,7 @@ and open the template in the editor.
                             </h:dataTable>
                             <br/>
                             <p></p>
-                            
+                            <ui:include src="#{requestMusicMb.url}"/>
                       
                         </h:form>
                         
@@ -101,6 +102,7 @@ and open the template in the editor.
 
                 </h:form>
             </ui:define>
+           
         </ui:composition>
     </h:body>
 </html>

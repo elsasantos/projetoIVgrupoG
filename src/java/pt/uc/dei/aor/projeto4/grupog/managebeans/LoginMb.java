@@ -63,7 +63,7 @@ public class LoginMb {
         try {
 
             logado.setUser(us);
-            return "PopularMusics";
+            return "listAllMusics";
 
         } catch (NullPointerException ex) {
             Logger.getLogger(LoginMb.class.getName()).log(Level.SEVERE, null, ex);

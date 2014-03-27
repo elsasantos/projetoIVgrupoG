@@ -16,6 +16,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
@@ -45,6 +47,7 @@ public class RequestMusicMb implements Serializable {
     private Part file1;
     private String message;
     private GregorianCalendar gc;
+    private String url;
 
     /**
      * Creates a new instance of MusicMb
@@ -59,6 +62,10 @@ public class RequestMusicMb implements Serializable {
         this.musics = null;
         this.message = null;
         gc = new GregorianCalendar();
+        FacesContext ctxt = FacesContext.getCurrentInstance();
+        ExternalContext ext = ctxt.getExternalContext();
+        this.url = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
+                + ext.getApplicationContextPath() + "/topmusic?mostpopular=mostpopular";
     }
 
     /**
@@ -120,7 +127,7 @@ public class RequestMusicMb implements Serializable {
      * @return DataModel<Music>
      */
     public DataModel<Music> getMusicList() {
-        if (music_ejb != null ) {
+        if (music_ejb != null) {
             List<Music> list = music_ejb.findAll();
             Collections.sort(list);
             DataModel model = (DataModel<Music>) new ListDataModel(list);
@@ -347,6 +354,14 @@ public class RequestMusicMb implements Serializable {
      */
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }
