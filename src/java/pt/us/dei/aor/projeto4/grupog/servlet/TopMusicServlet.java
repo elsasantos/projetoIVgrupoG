@@ -39,43 +39,44 @@ public class TopMusicServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String resp = request.getParameter("mostpopular");
-        response.setContentType("text/html;charset=UTF-8");
+//        String resp = request.getParameter("mostpopular");
+        response.setContentType("text/xml;charset=UTF-8");
 
         PrintWriter out = null;
-        if (resp.equals("mostpopular")) {
-            List<Music> allMusic = musicFacade.showMostPopularMusics();
-            StringBuffer sb = new StringBuffer();
-            try {
-                /* TODO output your page here. You may use following sample code. */
+//        if (resp.equals("mostpopular")) {
+        List<Music> allMusic = musicFacade.showMostPopularMusics();
+//            StringBuffer sb = new StringBuffer();
+        try {
+            /* TODO output your page here. You may use following sample code. */
 
-                out = response.getWriter();
-                out.println("<table>");
-                out.println("<th>No.</th>");
-                out.println("<th>Title</th>");
-                out.println("<th>Artist</th>");
-                out.println("<th>Album</th>");
-                out.println("<th>Music Year</th>");
-                out.println("<th>User</th>");
+            out = response.getWriter();
 
-                for (Music m : allMusic) {
-                    out.println("<tr><td>" + m.getPlaylists().size() + "</td>");
-                    out.println("<td>" + m.getTitle() + "</td>");
-                    out.println("<td>" + m.getArtist() + "</td>");
-                    out.println("<td>" + m.getAlbum() + "</td>");
-                    out.println("<td>" + m.getMusic_year() + "</td>");
-                    out.println("<td>" + m.getUser().getName() + "</td></tr>");
+            out.println("<table>");
+            out.println("<th>No.</th>");
+            out.println("<th>Title</th>");
+            out.println("<th>Artist</th>");
+            out.println("<th>Album</th>");
+            out.println("<th>Music Year</th>");
+            out.println("<th>User</th>");
 
-                }
-                out.println("</table>");
+            for (Music m : allMusic) {
+                out.println("<tr><td>" + m.getPlaylists().size() + "</td>");
+                out.println("<td>" + m.getTitle() + "</td>");
+                out.println("<td>" + m.getArtist() + "</td>");
+                out.println("<td>" + m.getAlbum() + "</td>");
+                out.println("<td>" + m.getMusic_year() + "</td>");
+                out.println("<td>" + m.getUser().getName() + "</td></tr>");
 
-            } catch (Exception e) {
-                out.println("erro");
             }
-        }
+            out.println("</table>");
 
-        if (resp.equals("topten")) {
-            List<Music> allMusic = musicFacade.showMostPopularMusics();
+        } catch (Exception e) {
+            out.println("erro");
+        }
+//        }
+
+        if (response.equals("topten")) {
+            List<Music> topMusic = musicFacade.showMostPopularMusics();
             StringBuffer sb = new StringBuffer();
             try {
                 /* TODO output your page here. You may use following sample code. */
@@ -86,10 +87,10 @@ public class TopMusicServlet extends HttpServlet {
                 out.println("<th>Title</th>");
                 out.println("<th>Artist</th>");
 
-                for (int i =0 ; i<allMusic.size() && i>10; i++) {
-                    out.println("<tr><td>" + allMusic.get(i).getPlaylists().size() + "</td>");
-                    out.println("<td>" + allMusic.get(i).getTitle() + "</td>");
-                    out.println("<td>" + allMusic.get(i).getArtist() + "</td></tr>");
+                for (int i =0 ; i<topMusic.size() && i>10; i++) {
+                    out.println("<tr><td>" + topMusic.get(i).getPlaylists().size() + "</td>");
+                    out.println("<td>" + topMusic.get(i).getTitle() + "</td>");
+                    out.println("<td>" + topMusic.get(i).getArtist() + "</td></tr>");
 
                 }
                 out.println("</table>");
