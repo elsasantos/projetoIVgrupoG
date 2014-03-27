@@ -48,38 +48,23 @@ public class TopMusicServlet extends HttpServlet {
             StringBuffer sb = new StringBuffer();
             try {
                 /* TODO output your page here. You may use following sample code. */
+
                 out = response.getWriter();
                 out.println("<table>");
                 out.println("<th>No.</th>");
                 out.println("<th>Title</th>");
                 out.println("<th>Artist</th>");
                 out.println("<th>Album</th>");
-
                 out.println("<th>Music Year</th>");
-
                 out.println("<th>User</th>");
 
                 for (Music m : allMusic) {
-                    out.println("<tr>");
-                    out.println("<td>");
-                    out.println(m.getPlaylists().size());
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println(m.getTitle());
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println(m.getArtist());
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println(m.getAlbum());
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println(m.getMusic_year());
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println(m.getUser().getName());
-                    out.println("</td>");
-                    out.println("</tr>");
+                    out.println("<tr><td>" + m.getPlaylists().size() + "</td>");
+                    out.println("<td>" + m.getTitle() + "</td>");
+                    out.println("<td>" + m.getArtist() + "</td>");
+                    out.println("<td>" + m.getAlbum() + "</td>");
+                    out.println("<td>" + m.getMusic_year() + "</td>");
+                    out.println("<td>" + m.getUser().getName() + "</td></tr>");
 
                 }
                 out.println("</table>");
