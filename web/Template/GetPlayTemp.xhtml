@@ -34,9 +34,6 @@
                     <h:commandButton value="Edit"  
                                      action="editUser.xhtml"/>
 
-                    <h:commandButton value="Delete User"
-                                     action="#{logged.deleteUser()}"/>
-
                 </h:form>
 
                 <div id="topmenu">
@@ -94,6 +91,12 @@
                             </li>
 
                         </ul>
+                    </div>
+                    
+                    <div id="topten">
+                        <ui:include id="servlet" src="#{requestMusicMb.url}">
+                            
+                        </ui:include>
                     </div>
 
                 </ui:insert>
