@@ -5,10 +5,6 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.ejbs;
 
-import pt.uc.dei.aor.projeto4.grupog.exceptions.SearchNullException;
-import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
-import pt.uc.dei.aor.projeto4.grupog.entities.Music;
-import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import java.io.File;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,6 +13,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.SearchNullException;
 
 /**
  * @author Elsa Santos
@@ -178,6 +178,21 @@ public class MusicFacade extends AbstractFacade<Music> {
 
         try {
             List<Music> m = (List<Music>) em.createNamedQuery("Music.findMostPopularMusics").getResultList();
+            return m;
+        } catch (NullPointerException | IllegalStateException ex) {
+            Logger.getLogger(MusicFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    /**
+     * most popular musics
+     * @return 
+     */
+    public List<Music> showTopTenPopularMusics() {
+
+        try {
+            List<Music> m = (List<Music>) em.createNamedQuery("Music.findMostPopularMusics").setMaxResults(10).getResultList();
             return m;
         } catch (NullPointerException | IllegalStateException ex) {
             Logger.getLogger(MusicFacade.class.getName()).log(Level.SEVERE, null, ex);
