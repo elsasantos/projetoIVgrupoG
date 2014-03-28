@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
 import pt.uc.dei.aor.projeto4.grupog.entities.Music;
-import pt.uc.dei.aor.projeto4.grupog.managebeans.RequestPlaylistMb;
 
 /**
  *
@@ -28,89 +27,70 @@ public class TopMusicServlet extends HttpServlet {
     @Inject
     private MusicFacade musicFacade;
 
-    @Inject
-    private RequestPlaylistMb requestPlayMb;
-
-    private List<Music> musicAllpop;
-    private List<Music> topTenmusic;
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String resp = request.getParameter("topten");
+    protected void topTenMusic(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/xml;charset=UTF-8");
-
         PrintWriter out = null;
-//        if (resp.equals("mostpopular")) {
-        musicAllpop = musicFacade.showMostPopularMusics();
-//            StringBuffer sb = new StringBuffer();
-        if (resp != null) {
-            if (resp.equals("all")) {
-                try {
-                    /* TODO output your page here. You may use following sample code. */
+        List<Music> topTenmusic = musicFacade.showTopTenPopularMusics();
+        StringBuffer sb = new StringBuffer();
+        try {
+            /* TODO output your page here. You may use following sample code. */
 
-                    out = response.getWriter();
+            out = response.getWriter();
+            out.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
+            out.println("<table>");
+            out.println("<th>Top</th>");
+            out.println("<th>Title</th>");
+            out.println("<th>Artist</th>");
+            out.println("<th>Nº of Uses</th>");
 
-                    out.println("<table>");
-                    out.println("<th>Nº of Uses</th>");
-                    out.println("<th>Title</th>");
-                    out.println("<th>Artist</th>");
-                    out.println("<th>Album</th>");
-                    out.println("<th>Music Year</th>");
-                    out.println("<th>User</th>");
-                    int a = 1;
-                    for (Music m : musicAllpop) {
-                        out.println("<tr><td>" +m.getPlaylists().size() + "</td>");
-                        out.println("<td>" + m.getTitle() + "</td>");
-                        out.println("<td>" + m.getArtist() + "</td>");
-                        out.println("<td>" + m.getAlbum() + "</td>");
-                        out.println("<td>" + m.getMusic_year() + "</td>");
-                        out.println("<td>" + m.getUser().getName() + "</td></tr>");
-                        a++;
+            int i = 1;
+            for (Music m : topTenmusic) {
+                out.println("<tr><td>" + i + "º" + "</td>");
+                out.println("<td>" + m.getTitle() + "</td>");
+                out.println("<td>" + m.getArtist() + "</td>");
+                out.println("<td>" + m.getPlaylists().size() + "</td></tr>");
+                i++;
+            }
+            out.println("</table>");
+            out.println("</html>");
 
-                    }
-                    out.println("</table>");
+        } catch (Exception e) {
+            out.println("erro");
+        }
 
-                } catch (Exception e) {
-                    out.println("erro");
-                }
-            } else if (resp.equals("topten")) {
-                topTenmusic = musicFacade.showTopTenPopularMusics();
-                StringBuffer sb = new StringBuffer();
-                try {
-                    /* TODO output your page here. You may use following sample code. */
+    }
 
-                    out = response.getWriter();
-                    out.println("<table>");
-                    out.println("<th>Top</th>");
-                    out.println("<th>Title</th>");
-                    out.println("<th>Artist</th>");
-                    out.println("<th>Nº of Uses</th>");
+    protected void allPopularMusic(HttpServletRequest request, HttpServletResponse response) {
+        response.setContentType("text/xml;charset=UTF-8");
+        PrintWriter out = null;
+        List<Music> musicAllpop = musicFacade.showMostPopularMusics();
+        try {
 
-                    int i = 1;
-                    for (Music m: topTenmusic) {
-                        out.println("<tr><td>" + i + "º" + "</td>");
-                        out.println("<td>" + m.getTitle() + "</td>");
-                        out.println("<td>" + m.getArtist() + "</td>");
-                        out.println("<td>" + m.getPlaylists().size() + "</td></tr>");
-                        i++;
-                    }
-                    out.println("</table>");
+            out = response.getWriter();
+            out.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
+            out.println("<table>");
+            out.println("<th>Nº of Uses</th>");
+            out.println("<th>Title</th>");
+            out.println("<th>Artist</th>");
+            out.println("<th>Album</th>");
+            out.println("<th>Music Year</th>");
+            out.println("<th>User</th>");
+            int a = 1;
+            for (Music m : musicAllpop) {
+                out.println("<tr><td>" + m.getPlaylists().size() + "</td>");
+                out.println("<td>" + m.getTitle() + "</td>");
+                out.println("<td>" + m.getArtist() + "</td>");
+                out.println("<td>" + m.getAlbum() + "</td>");
+                out.println("<td>" + m.getMusic_year() + "</td>");
+                out.println("<td>" + m.getUser().getName() + "</td></tr>");
+                a++;
 
-                } catch (Exception e) {
-                    out.println("erro");
-                }
+            }
+            out.println("</table>");
+            out.println("</html>");
 
-            } 
+        } catch (Exception e) {
+            out.println("erro");
         }
     }
 
@@ -126,41 +106,22 @@ public class TopMusicServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        String resp = request.getParameter("topten");
 
-    public List<Music> getMusicAllpop() {
-        return musicAllpop;
-    }
+        List<Music> musicAllpop = musicFacade.showMostPopularMusics();
 
-    public void setMusicAllpop(List<Music> musicAllpop) {
-        this.musicAllpop = musicAllpop;
-    }
+        if (resp != null) {
+            if (resp.equals("all")) {
 
-    public List<Music> getTopTenmusic() {
-        return topTenmusic;
-    }
+                allPopularMusic(request, response);
 
-    public void setTopTenmusic(List<Music> topTenmusic) {
-        this.topTenmusic = topTenmusic;
+            } else if (resp.equals("topten")) {
+
+                topTenMusic(request, response);
+
+            }
+        }
     }
 
 }

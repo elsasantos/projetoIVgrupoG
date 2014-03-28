@@ -126,6 +126,8 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
         try {
             playlist.getMusics().remove(music);
             edit(playlist);
+            music.getPlaylists().remove(playlist);
+            em.merge(music);
         } catch (NullPointerException | UnsupportedOperationException ex) {
             Logger.getLogger(PlaylistFacade.class.getName()).log(Level.SEVERE, null, ex);
         }

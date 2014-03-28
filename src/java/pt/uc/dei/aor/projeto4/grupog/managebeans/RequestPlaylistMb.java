@@ -5,6 +5,7 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.model.DataModel;
@@ -13,7 +14,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
 import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
 import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.MusicsAlreadyExistInPlaylistException;
 
 /**
  * @author Elsa Santos
@@ -78,15 +81,13 @@ public class RequestPlaylistMb {
 //    public List<Music> topTen(){
 //        
 //    }
-    
-   
-    
-    
-    public void createPlaylistFromServleTopTen(){
-        
-        playlist.setMusics(musicFacade.showTopTenPopularMusics());
+
+    public void createPlaylistFromServleTopTen() throws MusicsAlreadyExistInPlaylistException{
         addPlaylist();
-      
+        List<Music> musicstop = musicFacade.showTopTenPopularMusics();
+        for (Music m: musicstop){
+            playlist_ejb.addMusicToPlaylist(playlist, m);
+        } 
     }
     
     //Getter and Setter
