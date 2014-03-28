@@ -48,6 +48,7 @@ public class RequestMusicMb implements Serializable {
     private String message;
     private GregorianCalendar gc;
     private String url;
+    private String urlTop;
     private List<Music> musics2;
 
     /**
@@ -68,6 +69,9 @@ public class RequestMusicMb implements Serializable {
         ExternalContext ext = ctxt.getExternalContext();
         this.url = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
                 + ext.getApplicationContextPath() + "/topmusic?" + randomint();
+        
+        this.urlTop = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
+                + ext.getApplicationContextPath() + "/topmusic?topten=topten";
     }
 
     public int randomint() {
@@ -377,6 +381,14 @@ public class RequestMusicMb implements Serializable {
 
     public void setMusics2(List<Music> musics2) {
         this.musics2 = musics2;
+    }
+
+    public String getUrlTop() {
+        return urlTop;
+    }
+
+    public void setUrlTop(String urlTop) {
+        this.urlTop = urlTop;
     }
 
 }
