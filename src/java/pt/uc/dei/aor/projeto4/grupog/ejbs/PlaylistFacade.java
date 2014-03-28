@@ -194,11 +194,9 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
     public void deletePlaylist(Playlist p) {
         try {
             for (Music m : p.getMusics()) {
-                p.getMusics().remove(m);
-
+                m.getPlaylists().remove(p);
                 em.merge(m);
             }
-            edit(p);
 
             remove(p);
         } catch (Exception e) {
