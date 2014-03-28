@@ -107,10 +107,7 @@ public class TopMusicServlet extends HttpServlet {
                     out.println("erro");
                 }
 
-            } else if (resp.equals("CreatePlaylistTopTen")) {
-                topTenmusic = musicFacade.showTopTenPopularMusics();
-                requestPlayMb.createPlaylistFromServleTopTen(topTenmusic);
-            }
+            } 
         }
     }
 
