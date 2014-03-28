@@ -5,10 +5,6 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
-import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
-import pt.uc.dei.aor.projeto4.grupog.entities.Music;
-import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
@@ -17,12 +13,15 @@ import javax.faces.model.ListDataModel;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 
 /**
  * @author Elsa Santos
  * @author Orlando Neves
  */
-
 @Named("editPlaylistController")
 @ViewScoped
 public class EditPlaylistController {
@@ -135,7 +134,7 @@ public class EditPlaylistController {
      */
     public String destroy() {
         Playlist playlist = (Playlist) this.play.getRowData();
-        playlistEjb.remove(playlist);
+        playlistEjb.deletePlaylist(playlist);
         getMyPlaylist();
         return null;
     }
