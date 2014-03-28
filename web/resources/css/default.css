@@ -28,6 +28,3 @@ a:link:hover, a:visited:hover  {
   text-decoration : underline;
 }
 
-#javax_faces_developmentstage_messages {
-    display: none;
-}
