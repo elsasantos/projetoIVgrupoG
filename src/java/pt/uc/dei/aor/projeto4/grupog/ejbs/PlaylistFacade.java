@@ -104,9 +104,10 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
                 throw new MusicsAlreadyExistInPlaylistException();
             } else {
                 playlist.getMusics().add(music);
+                edit(playlist);
+                music.getPlaylists().add(playlist);
+                em.merge(music);
             }
-
-            edit(playlist);
 
         } catch (NullPointerException | IllegalArgumentException | IllegalStateException ex) {
             Logger.getLogger(PlaylistFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,6 +188,21 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
         } catch (NullPointerException | IllegalStateException ex) {
             Logger.getLogger(PlaylistFacade.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+
+    public void deletePlaylist(Playlist p) {
+        try {
+            for (Music m : p.getMusics()) {
+                p.getMusics().remove(m);
+
+                em.merge(m);
+            }
+            edit(p);
+
+            remove(p);
+        } catch (Exception e) {
+            System.out.println("ERRRROOOOO");
         }
     }
 }
