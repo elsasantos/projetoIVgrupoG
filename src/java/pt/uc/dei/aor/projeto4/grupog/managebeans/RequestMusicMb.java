@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
@@ -66,7 +67,12 @@ public class RequestMusicMb implements Serializable {
         FacesContext ctxt = FacesContext.getCurrentInstance();
         ExternalContext ext = ctxt.getExternalContext();
         this.url = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
-                + ext.getApplicationContextPath() + "/topmusic?mostpopular=mostpopular";
+                + ext.getApplicationContextPath() + "/topmusic?" + randomint();
+    }
+
+    public int randomint() {
+        Random r = new Random();
+        return r.nextInt();
     }
 
     /**

@@ -92,12 +92,19 @@ public class TopMusicServlet extends HttpServlet {
                     out.println("<td>" + topMusic.get(i).getTitle() + "</td>");
                     out.println("<td>" + topMusic.get(i).getArtist() + "</td></tr>");
 
-                }
-                out.println("</table>");
+            for (Music m : allMusic) {
+                out.println("<tr><td>" + m.getPlaylists().size() + "</td>");
+                out.println("<td>" + m.getTitle() + "</td>");
+                out.println("<td>" + m.getArtist() + "</td>");
+                out.println("<td>" + m.getAlbum() + "</td>");
+                out.println("<td>" + m.getMusic_year() + "</td>");
+                out.println("<td>" + m.getUser().getName() + "</td></tr>");
 
-            } catch (Exception e) {
-                out.println("erro");
             }
+            out.println("</table>");
+
+        } catch (Exception e) {
+            out.println("erro");
         }
     }
 
