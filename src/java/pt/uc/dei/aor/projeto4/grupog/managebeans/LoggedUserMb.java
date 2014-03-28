@@ -5,18 +5,19 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import pt.uc.dei.aor.projeto4.grupog.ejbs.AppUserFacade;
-import pt.uc.dei.aor.projeto4.grupog.ejbs.DeleteUser;
-import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.AppUserFacade;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.DeleteUser;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
 
 /**
  * @author Elsa Santos
@@ -33,6 +34,8 @@ public class LoggedUserMb implements Serializable {
     @Inject
     private DeleteUser delUser;
     private String errorMessage;
+    private UIForm confirmDeleteUser;
+  
 
     /**
      * Creates a new instance of LoggedUser
@@ -84,6 +87,19 @@ public class LoggedUserMb implements Serializable {
         return "index.xhtml";
     }
 
+        /**
+     * Invokes DelUser EJB method to remove logged user
+     *
+     * @return
+     */
+    public void aConfirmDeleteUser() {
+        confirmDeleteUser.setRendered(true);
+    }
+    
+    public void confirmNoDeleteUser(){
+        confirmDeleteUser.setRendered(false);
+    }
+    
     //Getter and Setter
     /**
      * Get User
@@ -174,5 +190,15 @@ public class LoggedUserMb implements Serializable {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
+    public UIForm getConfirmDeleteUser() {
+        return confirmDeleteUser;
+    }
+
+    public void setConfirmDeleteUser(UIForm confirmDeleteUser) {
+        this.confirmDeleteUser = confirmDeleteUser;
+    }
+    
+    
 
 }
