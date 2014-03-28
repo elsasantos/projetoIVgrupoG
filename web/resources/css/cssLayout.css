@@ -302,10 +302,12 @@ html, body {
 #messages .info td {
     background: url('info.gif') no-repeat left center;
     padding-left: 15px;
+    color: darkgreen;
 }
 #messages .error td {
     background: url('error.gif') no-repeat left center;
     padding-left: 15px;
+    color: #e33b06;
 }
 
 #messages {
@@ -313,7 +315,6 @@ html, body {
     margin: 0 auto;
     border: 1px black solid;
     border-collapse: collapse;
-    color: #e33b06;
 }
 
 .playBtn{
@@ -322,4 +323,82 @@ html, body {
 
 .playBtn:hover{
     width: 42%
+}
+
+.dataTableTopTen {
+    margin:0px;padding:0px;
+    width:100%;
+    border:2px solid #ffffff;
+    margin-top: 25px;
+    color: #FFFFFF;
+    font-size: 10px;
+    text-align:center;
+    border-spacing: 10px;
+    
+    -moz-border-radius-bottomleft:5px;
+    -webkit-border-bottom-left-radius:5px;
+    border-bottom-left-radius:5px;
+
+    -moz-border-radius-bottomright:5px;
+    -webkit-border-bottom-right-radius:5px;
+    border-bottom-right-radius:5px;
+
+    -moz-border-radius-topright:5px;
+    -webkit-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+
+    -moz-border-radius-topleft:5px;
+    -webkit-border-top-left-radius:5px;
+    border-top-left-radius:5px;
+}.dataTableTopTen table{
+    border-collapse: collapse;
+    border-spacing: 5px;
+    width:100%;
+    height:100%;
+    margin:0px;padding:0px;
+
+}
+.dataTableTopTen tr:last-child td:last-child {
+    -moz-border-radius-bottomright:5px;
+    -webkit-border-bottom-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.dataTableTopTen table tr:first-child td:first-child {
+    -moz-border-radius-topleft:5px;
+    -webkit-border-top-left-radius:5px;
+    border-top-left-radius:5px;
+}
+.dataTableTopTen table tr:first-child td:last-child {
+    -moz-border-radius-topright:5px;
+    -webkit-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+}.dataTableTopTen tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:5px;
+    -webkit-border-bottom-left-radius:5px;
+    border-bottom-left-radius:5px;
+}.dataTableTopTen tr:hover td{
+
+}
+.dataTableTopTen tr:nth-child(odd){ background-color:#CF6C00; }
+.dataTableTopTen tr:nth-child(even)    { background-color:#232323; }.dataTable td{
+    vertical-align:middle;
+
+
+    border:1px solid #ffffff;
+    border-width:0px 1px 1px 0px;
+    text-align:center;
+    padding:10px;
+    font-size:11px;
+    font-family:Arial;
+    font-weight:normal;
+    color:#ffffff;
+}.dataTableTopTen tr:last-child td{
+    border-width:0px 1px 0px 0px;
+    height: 20px;
+}.dataTableTopTen tr td:last-child{
+    border-width:0px 0px 1px 0px;
+    height: 20px;
+}.dataTableTopTen tr:last-child td:last-child{
+    border-width:0px 0px 0px 0px;
+    height: 20px;
 }
