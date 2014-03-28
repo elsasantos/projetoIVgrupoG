@@ -14,7 +14,7 @@
         <h:outputScript library="js" name="jquery-latest.min.js" />
         <h:outputScript library="js" name="menu_jquery.js" />
         <title>GetPlay Template</title>
-        
+
         <script>
 
             var ajaxRequest;
@@ -23,7 +23,7 @@
                 if (ajaxRequest.readyState === 4) {
                     var texto = ajaxRequest.responseText;
                     document.getElementById("topten").innerHTML = texto;
-                    setTimeout(makeAjaxRequest, 10000);
+                    setTimeout(makeAjaxRequest, 1000);
                 }
             }
 
@@ -36,7 +36,7 @@
             }
 
         </script>
-        
+
     </h:head>
 
     <h:body onload="makeAjaxRequest()">
@@ -62,7 +62,7 @@
                 <div id="topmenu">
                     <div id='cssmenutop'>
                         <ul>
-                            
+
                             <li><a href='listAllMusics.xhtml'><span>All Musics</span></a></li>
                             <li><a href='PopularMusics.xhtml'><span>Popular Music</span></a></li>
                             <li><a href='listMyMusics.xhtml'><span>My Musics</span></a></li>
@@ -115,16 +115,18 @@
 
                         </ul>
                     </div>
-                    
+
                     <br/>
-                    <h:outputLabel value="Top 10" style="background: #e5e5e5"/>
                     
-                    <div  id="topten" class="dataTable">  
+                    <h1>
+                        <h:outputLabel value="TOP 10" class="titleTopTen"/>
+                    </h1>
+      
+                    <div  id="topten" class="dataTableTopTen">  
                     </div>
-                    
-                  
-                    <li> <a href='CreatePlaylistTopTen.xhtml'><span>Insert Playlist</span></a></li>
-                   
+                    <br/>
+                    <li> <a href='CreatePlaylistTopTen.xhtml'><span>Create Playlist Top 10</span></a></li>
+
 
                 </ui:insert>
             </div>
