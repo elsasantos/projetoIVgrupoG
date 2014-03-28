@@ -79,16 +79,13 @@ public class RequestPlaylistMb {
 //        
 //    }
     
-    public String createPlaylistTopTen(){
+   
+    
+    
+    public void createPlaylistFromServleTopTen(){
         
-        return "listAllMusics";
-    }
-    
-    
-    public String createPlaylistFromServleTopTen(){
-    
         playlist.setMusics(musicFacade.showTopTenPopularMusics());
-        return "createPlaylist";
+        addPlaylist();
       
     }
     
