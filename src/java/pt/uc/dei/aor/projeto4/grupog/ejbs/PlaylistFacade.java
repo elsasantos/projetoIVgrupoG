@@ -202,7 +202,9 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
 
             remove(p);
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("ERRRROOOOO");
         }
     }
+
 }
