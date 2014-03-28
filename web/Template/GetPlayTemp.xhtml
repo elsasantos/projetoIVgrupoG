@@ -14,9 +14,32 @@
         <h:outputScript library="js" name="jquery-latest.min.js" />
         <h:outputScript library="js" name="menu_jquery.js" />
         <title>GetPlay Template</title>
+        
+        <script>
+
+            var ajaxRequest;
+
+            function ajaxRequestChanged() {
+                if (ajaxRequest.readyState === 4) {
+                    var texto = ajaxRequest.responseText;
+                    document.getElementById("topten").innerHTML = texto;
+                    setTimeout(makeAjaxRequest, 10000);
+                }
+            }
+
+            function makeAjaxRequest() {
+                ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = ajaxRequestChanged;
+                ajaxRequest.open("GET", "/GetPlayWeb/topmusic?topten=topten", true);
+                ajaxRequest.send(null);
+                return false;
+            }
+
+        </script>
+        
     </h:head>
 
-    <h:body>
+    <h:body onload="makeAjaxRequest()">
 
         <div id="logo">
             <img src="resources/images/logo_branco.png" width="150" alt="logo_branco"/>
@@ -92,11 +115,10 @@
 
                         </ul>
                     </div>
-                    
-                    <div id="topten">
-                        <ui:include id="servlet" src="#{requestMusicMb.url}">
-                            
-                        </ui:include>
+                    <br/>
+                    <h:outputLabel value="Top 10" style="background: #e5e5e5"/>
+                    <div  id="topten" class="dataTable">
+
                     </div>
 
                 </ui:insert>
