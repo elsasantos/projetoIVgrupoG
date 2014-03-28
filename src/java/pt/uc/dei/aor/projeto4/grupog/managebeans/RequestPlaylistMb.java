@@ -5,14 +5,15 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
-import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 
 /**
  * @author Elsa Santos
@@ -29,6 +30,8 @@ public class RequestPlaylistMb {
     private DataModel<Playlist> play;
     private Playlist playlist;
     private String message;
+    @Inject
+    private MusicFacade musicFacade;
 
     /**
      * Creates a new instance of PlaylistMB
@@ -71,6 +74,24 @@ public class RequestPlaylistMb {
         }
         return null;
     }
+    
+//    public List<Music> topTen(){
+//        
+//    }
+    
+    public String createPlaylistTopTen(){
+        
+        return "listAllMusics";
+    }
+    
+    
+    public String createPlaylistFromServleTopTen(){
+    
+        playlist.setMusics(musicFacade.showTopTenPopularMusics());
+        return "createPlaylist";
+      
+    }
+    
     //Getter and Setter
 
     /**

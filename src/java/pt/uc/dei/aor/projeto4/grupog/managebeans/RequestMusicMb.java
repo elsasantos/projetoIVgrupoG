@@ -68,7 +68,7 @@ public class RequestMusicMb implements Serializable {
         FacesContext ctxt = FacesContext.getCurrentInstance();
         ExternalContext ext = ctxt.getExternalContext();
         this.url = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
-                + ext.getApplicationContextPath() + "/topmusic?" + randomint();
+                + ext.getApplicationContextPath() + "/topmusic?topten=all&" + randomint();
         
         this.urlTop = "http://" + ext.getRequestServerName() + ":" + ext.getRequestServerPort()
                 + ext.getApplicationContextPath() + "/topmusic?topten=topten";
