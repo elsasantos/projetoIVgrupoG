@@ -27,6 +27,9 @@ public class TopMusicServlet extends HttpServlet {
     @Inject
     private MusicFacade musicFacade;
 
+    private List<Music> musicAllpop;
+    private List<Music> topTenmusic;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,27 +42,28 @@ public class TopMusicServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        String resp = request.getParameter("mostpopular");
+        String resp = request.getParameter("topten");
         response.setContentType("text/xml;charset=UTF-8");
 
         PrintWriter out = null;
 //        if (resp.equals("mostpopular")) {
-        List<Music> allMusic = musicFacade.showMostPopularMusics();
+        musicAllpop = musicFacade.showMostPopularMusics();
 //            StringBuffer sb = new StringBuffer();
+      if(resp==null){
         try {
             /* TODO output your page here. You may use following sample code. */
 
             out = response.getWriter();
 
             out.println("<table>");
-            out.println("<th>No.</th>");
+            out.println("<th>Nº of Uses</th>");
             out.println("<th>Title</th>");
             out.println("<th>Artist</th>");
             out.println("<th>Album</th>");
             out.println("<th>Music Year</th>");
             out.println("<th>User</th>");
 
-            for (Music m : allMusic) {
+            for (Music m : musicAllpop) {
                 out.println("<tr><td>" + m.getPlaylists().size() + "</td>");
                 out.println("<td>" + m.getTitle() + "</td>");
                 out.println("<td>" + m.getArtist() + "</td>");
@@ -73,39 +77,33 @@ public class TopMusicServlet extends HttpServlet {
         } catch (Exception e) {
             out.println("erro");
         }
-//        }
-
-        if (response.equals("topten")) {
-            List<Music> topMusic = musicFacade.showMostPopularMusics();
+        }
+      else{
+        if (resp.equals("topten")) {
+            topTenmusic = musicFacade.showTopTenPopularMusics();
             StringBuffer sb = new StringBuffer();
             try {
                 /* TODO output your page here. You may use following sample code. */
 
                 out = response.getWriter();
                 out.println("<table>");
-                out.println("<th>No.</th>");
+                out.println("<th>Top</th>");
                 out.println("<th>Title</th>");
                 out.println("<th>Artist</th>");
 
-                for (int i =0 ; i<topMusic.size() && i>10; i++) {
-                    out.println("<tr><td>" + topMusic.get(i).getPlaylists().size() + "</td>");
-                    out.println("<td>" + topMusic.get(i).getTitle() + "</td>");
-                    out.println("<td>" + topMusic.get(i).getArtist() + "</td></tr>");
+                for (int i = 0; i < topTenmusic.size(); i++) {
+                    out.println("<tr><td>" + (i+1)+ "º" + "</td>");
+                    out.println("<td>" + topTenmusic.get(i).getTitle() + "</td>");
+                    out.println("<td>" + topTenmusic.get(i).getArtist() + "</td></tr>");
 
-            for (Music m : allMusic) {
-                out.println("<tr><td>" + m.getPlaylists().size() + "</td>");
-                out.println("<td>" + m.getTitle() + "</td>");
-                out.println("<td>" + m.getArtist() + "</td>");
-                out.println("<td>" + m.getAlbum() + "</td>");
-                out.println("<td>" + m.getMusic_year() + "</td>");
-                out.println("<td>" + m.getUser().getName() + "</td></tr>");
+                }
+                out.println("</table>");
 
+            } catch (Exception e) {
+                out.println("erro");
             }
-            out.println("</table>");
-
-        } catch (Exception e) {
-            out.println("erro");
         }
+      }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -131,12 +129,7 @@ public class TopMusicServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -146,5 +139,22 @@ public class TopMusicServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public List<Music> getMusicAllpop() {
+        return musicAllpop;
+    }
+
+    public void setMusicAllpop(List<Music> musicAllpop) {
+        this.musicAllpop = musicAllpop;
+    }
+
+    public List<Music> getTopTenmusic() {
+        return topTenmusic;
+    }
+
+    public void setTopTenmusic(List<Music> topTenmusic) {
+        this.topTenmusic = topTenmusic;
+    }
+    
 
 }
