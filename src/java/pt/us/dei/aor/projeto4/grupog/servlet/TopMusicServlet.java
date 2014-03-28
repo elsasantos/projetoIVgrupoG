@@ -61,7 +61,7 @@ public class TopMusicServlet extends HttpServlet {
                     out = response.getWriter();
 
                     out.println("<table>");
-                    out.println("<th>Top</th>");
+                    out.println("<th>Nº of Uses</th>");
                     out.println("<th>Title</th>");
                     out.println("<th>Artist</th>");
                     out.println("<th>Album</th>");
@@ -94,12 +94,15 @@ public class TopMusicServlet extends HttpServlet {
                     out.println("<th>Top</th>");
                     out.println("<th>Title</th>");
                     out.println("<th>Artist</th>");
+                    out.println("<th>Nº of Uses</th>");
 
-                    for (int i = 0; i < topTenmusic.size(); i++) {
-                        out.println("<tr><td>" + (i + 1) + "º" + "</td>");
-                        out.println("<td>" + topTenmusic.get(i).getTitle() + "</td>");
-                        out.println("<td>" + topTenmusic.get(i).getArtist() + "</td></tr>");
-
+                    int i = 1;
+                    for (Music m: topTenmusic) {
+                        out.println("<tr><td>" + i + "º" + "</td>");
+                        out.println("<td>" + m.getTitle() + "</td>");
+                        out.println("<td>" + m.getArtist() + "</td>");
+                        out.println("<td>" + m.getPlaylists().size() + "</td></tr>");
+                        i++;
                     }
                     out.println("</table>");
 
