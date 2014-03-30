@@ -11,7 +11,6 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-
     <h:head>
         <ui:insert name="metadata"/>
         <f:event type="preRenderView" listener="#{loginMb.verifyUser()}" />
@@ -38,14 +37,12 @@ and open the template in the editor.
                         <h:outputLabel value="Year"/>
                         <h:inputText label="Year" value="#{requestMusicMb.music.music_year}"/>
 
-
                         <h:outputLabel value="Path"/>
                         <h:inputFile id="f" required="true" requiredMessage="Please choose a file" value="#{requestMusicMb.file1}" />
                         <h:message for="f" errorClass="errorMessage" />
                         <p></p>
 
                         <h:commandButton type="submit"  value="Save" action="#{requestMusicMb.addMusic()}"  />
-
 
                     </h:panelGrid>
 
