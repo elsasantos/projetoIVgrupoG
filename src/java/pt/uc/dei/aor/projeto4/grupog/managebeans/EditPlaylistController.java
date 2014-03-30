@@ -20,7 +20,7 @@ import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Named("editPlaylistController")
 @ViewScoped

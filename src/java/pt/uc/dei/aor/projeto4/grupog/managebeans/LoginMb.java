@@ -18,7 +18,7 @@ import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Named
 @RequestScoped

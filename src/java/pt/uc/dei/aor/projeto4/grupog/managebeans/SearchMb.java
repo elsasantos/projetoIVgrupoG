@@ -5,9 +5,6 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.managebeans;
 
-import pt.uc.dei.aor.projeto4.grupog.exceptions.SearchNullException;
-import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
-import pt.uc.dei.aor.projeto4.grupog.entities.Music;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,10 +18,13 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Music;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.SearchNullException;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Named("searchMb")
 @RequestScoped

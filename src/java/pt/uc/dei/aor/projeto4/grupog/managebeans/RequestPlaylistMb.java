@@ -20,7 +20,7 @@ import pt.uc.dei.aor.projeto4.grupog.exceptions.MusicsAlreadyExistInPlaylistExce
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Named("requestPlaylistMb")
 @RequestScoped

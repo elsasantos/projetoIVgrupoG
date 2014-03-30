@@ -28,7 +28,7 @@ import pt.uc.dei.aor.projeto4.grupog.entities.Music;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Named("requestMusicMb")
 @RequestScoped
