@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Entity
 @Table(name = "PLAYLIST")

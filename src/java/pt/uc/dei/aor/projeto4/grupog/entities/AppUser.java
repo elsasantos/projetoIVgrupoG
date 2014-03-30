@@ -23,7 +23,7 @@ import javax.validation.constraints.Pattern;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Entity
 @Table(name = "appuser")
