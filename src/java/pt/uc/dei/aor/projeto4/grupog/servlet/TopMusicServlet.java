@@ -8,7 +8,12 @@ package pt.uc.dei.aor.projeto4.grupog.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +23,8 @@ import pt.uc.dei.aor.projeto4.grupog.ejbs.MusicFacade;
 import pt.uc.dei.aor.projeto4.grupog.entities.Music;
 
 /**
- *
- * @author User
+ * @author Elsa Santos
+ * @author Pedro Pamplona
  */
 @WebServlet(name = "TopMusicServlet", urlPatterns = {"/topmusic"})
 public class TopMusicServlet extends HttpServlet {
@@ -31,7 +36,7 @@ public class TopMusicServlet extends HttpServlet {
         response.setContentType("text/xml;charset=UTF-8");
         PrintWriter out = null;
         List<Music> topTenmusic = musicFacade.showTopTenPopularMusics();
-        StringBuffer sb = new StringBuffer();
+
         try {
             /* TODO output your page here. You may use following sample code. */
 
@@ -54,8 +59,8 @@ public class TopMusicServlet extends HttpServlet {
             out.println("</table>");
             out.println("</html>");
 
-        } catch (Exception e) {
-            out.println("erro");
+        } catch (IOException e) {
+            Logger.getLogger(TopMusicServlet.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
@@ -89,9 +94,40 @@ public class TopMusicServlet extends HttpServlet {
             out.println("</table>");
             out.println("</html>");
 
-        } catch (Exception e) {
-            out.println("erro");
+        } catch (IOException e) {
+            Logger.getLogger(TopMusicServlet.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+
+    protected void toptenjson(HttpServletRequest request, HttpServletResponse response) {
+        response.setContentType("text/xml;charset=UTF-8");
+
+        List<Music> topTenmusic = musicFacade.showTopTenPopularMusics();
+        response.setContentType("application/json;charset=UTF-8");
+        JsonObjectBuilder musicbuilder;
+        JsonObjectBuilder toptenlistbuilder = Json.createObjectBuilder();
+        JsonObject music;
+
+        int i = 1;
+        for (Music m : topTenmusic) {
+            musicbuilder = Json.createObjectBuilder();
+            musicbuilder.add("top", i);
+            musicbuilder.add("title", m.getTitle());
+            musicbuilder.add("artist", m.getArtist());
+            musicbuilder.add("n_of_uses", m.getPlaylists().size());
+            music = musicbuilder.build();
+            toptenlistbuilder.add("music", music);
+        }
+
+        JsonObject toptenjson = toptenlistbuilder.build();
+        try {
+            PrintWriter out = response.getWriter();
+            out.print(toptenjson);
+            out.flush();
+        } catch (IOException ex) {
+            Logger.getLogger(TopMusicServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -109,9 +145,8 @@ public class TopMusicServlet extends HttpServlet {
 
         String resp = request.getParameter("topten");
 
-        List<Music> musicAllpop = musicFacade.showMostPopularMusics();
-
         if (resp != null) {
+
             if (resp.equals("all")) {
 
                 allPopularMusic(request, response);
@@ -119,6 +154,10 @@ public class TopMusicServlet extends HttpServlet {
             } else if (resp.equals("topten")) {
 
                 topTenMusic(request, response);
+
+            } else if (resp.equals("toptenjson")) {
+
+                toptenjson(request, response);
 
             }
         }
