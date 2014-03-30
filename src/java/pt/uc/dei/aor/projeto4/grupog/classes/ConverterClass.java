@@ -5,17 +5,17 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.classes;
 
-import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
-import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
+import pt.uc.dei.aor.projeto4.grupog.ejbs.PlaylistFacade;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 
 public class ConverterClass implements Converter {

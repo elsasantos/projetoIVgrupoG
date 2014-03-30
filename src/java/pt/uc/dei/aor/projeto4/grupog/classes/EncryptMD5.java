@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 public class EncryptMD5 {
 
