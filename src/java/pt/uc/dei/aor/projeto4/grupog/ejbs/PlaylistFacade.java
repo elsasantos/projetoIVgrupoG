@@ -18,7 +18,7 @@ import pt.uc.dei.aor.projeto4.grupog.exceptions.MusicsAlreadyExistInPlaylistExce
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Stateless
 public class PlaylistFacade extends AbstractFacade<Playlist> {

@@ -20,7 +20,7 @@ import pt.uc.dei.aor.projeto4.grupog.exceptions.SearchNullException;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Stateless
 public class MusicFacade extends AbstractFacade<Music> {

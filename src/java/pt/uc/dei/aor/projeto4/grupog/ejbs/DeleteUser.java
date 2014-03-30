@@ -5,17 +5,17 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.ejbs;
 
-import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
-import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 import java.io.File;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.inject.Inject;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.entities.Playlist;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Stateful
 public class DeleteUser {

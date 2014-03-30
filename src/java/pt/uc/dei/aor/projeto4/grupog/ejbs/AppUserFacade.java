@@ -5,9 +5,6 @@
  */
 package pt.uc.dei.aor.projeto4.grupog.ejbs;
 
-import pt.uc.dei.aor.projeto4.grupog.classes.EncryptMD5;
-import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
-import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -16,10 +13,13 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import pt.uc.dei.aor.projeto4.grupog.classes.EncryptMD5;
+import pt.uc.dei.aor.projeto4.grupog.entities.AppUser;
+import pt.uc.dei.aor.projeto4.grupog.exceptions.DuplicateEmailException;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 @Stateless
 public class AppUserFacade extends AbstractFacade<AppUser> {
