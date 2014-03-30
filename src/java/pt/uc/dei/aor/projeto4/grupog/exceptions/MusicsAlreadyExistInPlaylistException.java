@@ -8,7 +8,7 @@ package pt.uc.dei.aor.projeto4.grupog.exceptions;
 
 /**
  * @author Elsa Santos
- * @author Orlando Neves
+ * @author Pedro Pamplona
  */
 
 public class MusicsAlreadyExistInPlaylistException extends Exception{
